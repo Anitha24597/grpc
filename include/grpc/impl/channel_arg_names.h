@@ -48,28 +48,28 @@
 #define GRPC_ARG_MAX_SEND_MESSAGE_LENGTH "grpc.max_send_message_length"
 /** Maximum time that a channel may have no outstanding rpcs, after which the
  * server will close the connection. Int valued, milliseconds. INT_MAX means
- * unlimited. Deafaults to infinity(no timeout).*/
+ * unlimited. Defaults to INT_MAX. */
 #define GRPC_ARG_MAX_CONNECTION_IDLE_MS "grpc.max_connection_idle_ms"
 /** Maximum time that a channel may exist. Int valued, milliseconds.
- * INT_MAX means unlimited. Deafaults to infinity(no timeout). */
+ * INT_MAX means unlimited. Defaults to INT_MAX. */
 #define GRPC_ARG_MAX_CONNECTION_AGE_MS "grpc.max_connection_age_ms"
 /** Grace period after the channel reaches its max age. Int valued,
-   milliseconds. INT_MAX means unlimited. Deafaults to infinity(no timeout). */
+   milliseconds. INT_MAX means unlimited. Defaults to INT_MAX. */
 #define GRPC_ARG_MAX_CONNECTION_AGE_GRACE_MS "grpc.max_connection_age_grace_ms"
 /** Timeout after the last RPC finishes on the client channel at which the
  * channel goes back into IDLE state. Int valued, milliseconds. INT_MAX means
  * unlimited. The default value is 30 minutes and the min value is 1 second. */
 #define GRPC_ARG_CLIENT_IDLE_TIMEOUT_MS "grpc.client_idle_timeout_ms"
 /** Enable/disable support for per-message compression. Boolean valued. Defaults to true, unless
-    GRPC_ARG_MINIMAL_STACK is enabled, in which case it defaults to 0. */
+    GRPC_ARG_MINIMAL_STACK is enabled, in which case it defaults to false. */
 #define GRPC_ARG_ENABLE_PER_MESSAGE_COMPRESSION "grpc.per_message_compression"
 /** Experimental Arg. Enable/disable support for per-message decompression.
    Defaults to 1. If disabled, decompression will not be performed and the
    application will see the compressed message in the byte buffer. */
 #define GRPC_ARG_ENABLE_PER_MESSAGE_DECOMPRESSION \
   "grpc.per_message_decompression"
-/** Initial stream ID for http2 transports. Int valued. Defaults to -1(indicating no 
-    explicit initial stream ID), so it will take standard http/2 default initial stream Id to 1.  */
+/** Initial stream ID for http2 transports. Int valued. Defaults to -1
+    indicating use of default http2 setting initial stream ID (1). */
 #define GRPC_ARG_HTTP2_INITIAL_SEQUENCE_NUMBER \
   "grpc.http2.initial_sequence_number"
 /** Amount to read ahead on individual streams. Defaults to 64kb, larger
@@ -77,14 +77,12 @@
     NOTE: at some point we'd like to auto-tune this, and this parameter
     will become a no-op. Int valued, bytes. */
 #define GRPC_ARG_HTTP2_STREAM_LOOKAHEAD_BYTES "grpc.http2.lookahead_bytes"
-/** How much memory to use for hpack decoding. Int valued, bytes. Defaults to -1(indicating no 
-    explicit hpack table size decoder), so it will take standard http/2 specified HPACK
-    table size decoder to 4096 bytes. */
+/** How much memory to use for hpack decoding. Int valued, bytes. Defaults to -1
+    indicating use of default http2 setting(4096 bytes). */
 #define GRPC_ARG_HTTP2_HPACK_TABLE_SIZE_DECODER \
   "grpc.http2.hpack_table_size.decoder"
-/** How much memory to use for hpack encoding. Int valued, bytes. Defaults to -1(indicating no 
-    explicit hpack table size encoder), so it will take standard http/2 specified HPACK
-    table size encoder to 4096 bytes. */
+/** How much memory to use for hpack encoding. Int valued, bytes. Defaults to -1
+    indicating use of default http2 setting(4096 bytes). */
 #define GRPC_ARG_HTTP2_HPACK_TABLE_SIZE_ENCODER \
   "grpc.http2.hpack_table_size.encoder"
 /** How big a frame are we willing to receive via HTTP2.
@@ -117,7 +115,7 @@
     before the request is cancelled */
 #define GRPC_ARG_SERVER_MAX_UNREQUESTED_TIME_IN_SERVER_SECONDS \
   "grpc.server_max_unrequested_time_in_server"
-/** Channel arg to override the http2 :scheme header String valued. */
+/** Channel arg to override the http2 :scheme header. String valued. */
 #define GRPC_ARG_HTTP2_SCHEME "grpc.http2_scheme"
 /** How many pings can the client send before needing to send a data/header
    frame? (0 indicates that an infinite number of pings can be sent without
@@ -185,11 +183,11 @@
     type \a GRPC_ARG_STRING. If this argument is not specified, the name used
     for SSL host name checking will be the target parameter (assuming that the
     secure channel is an SSL channel). If this parameter is specified and the
-    underlying is not an SSL channel, it will just be ignored. A string Value. */
+    underlying is not an SSL channel, it will just be ignored. */
 #define GRPC_SSL_TARGET_NAME_OVERRIDE_ARG "grpc.ssl_target_name_override"
 /** If non-zero, a pointer to a session cache (a pointer of type
     grpc_ssl_session_cache*). (use grpc_ssl_session_cache_arg_vtable() to fetch
-    an appropriate pointer arg vtable). A pointer. */
+    an appropriate pointer arg vtable). */
 #define GRPC_SSL_SESSION_CACHE_ARG "grpc.ssl_session_cache"
 /** If non-zero, it will determine the maximum frame size used by TSI's frame
  *  protector. Defaults to zero.
@@ -211,9 +209,9 @@
 #define GRPC_ARG_ALLOW_REUSEPORT "grpc.so_reuseport"
 /** If non-zero, a pointer to a buffer pool (a pointer of type
  * grpc_resource_quota*). (use grpc_resource_quota_arg_vtable() to fetch an
- * appropriate pointer arg vtable). A pointer. */
+ * appropriate pointer arg vtable). */
 #define GRPC_ARG_RESOURCE_QUOTA "grpc.resource_quota"
-/** If non-zero, expand wildcard addresses to a list of local addresses. Range from 0, 1 to INT_MAX. */
+/** If non-zero, expand wildcard addresses to a list of local addresses. Boolean valued. */
 #define GRPC_ARG_EXPAND_WILDCARD_ADDRS "grpc.expand_wildcard_addrs"
 /** Service config data in JSON form.
     This value will be ignored if the name resolver returns a service config. A string value. */
@@ -242,14 +240,14 @@
  * is for channelz to be enabled. */
 #define GRPC_ARG_ENABLE_CHANNELZ "grpc.enable_channelz"
 /** Channel arg (integer) setting how large a slice to try and read from the
-   wire each time recvmsg (or equivalent) is called Range varied from 8192
-   to (32 * 1024 * 1024) bytes. **/
+   wire each time recvmsg (or equivalent). Range varied from 1
+   to (32 * 1024 * 1024) bytes. Defaults to 8192 bytes. **/
 #define GRPC_ARG_TCP_READ_CHUNK_SIZE "grpc.experimental.tcp_read_chunk_size"
 /** Note this is not a "channel arg" key. This is the default slice size to use
  * when trying to read from the wire if the GRPC_ARG_TCP_READ_CHUNK_SIZE
  * channel arg is unspecified. */
 #define GRPC_TCP_DEFAULT_READ_SLICE_SIZE 8192
-/** Minimum read chunk size varies from 256 to (32 * 1024 * 1024) bytes. */
+/** Minimum read chunk size defaults to 256 bytes. Range varies from 1 to (32 * 1024 * 1024) bytes. */
 #define GRPC_ARG_TCP_MIN_READ_CHUNK_SIZE \
   "grpc.experimental.tcp_min_read_chunk_size"
 #define GRPC_ARG_TCP_MAX_READ_CHUNK_SIZE \
@@ -281,12 +279,12 @@
    using the global instance, which is not the intended way to use xDS.
    Currently, this will (a) add unnecessary load on the xDS server and
    (b) break use of CSDS, and there may be additional side effects in
-   the future. A string value. */
+   the future. */
 #define GRPC_ARG_TEST_ONLY_DO_NOT_USE_IN_PROD_XDS_BOOTSTRAP_CONFIG \
   "grpc.TEST_ONLY_DO_NOT_USE_IN_PROD.xds_bootstrap_config"
 /* Timeout in milliseconds to wait for the serverlist from the grpclb load
    balancer before using fallback backend addresses from the resolver.
-   If 0, enter fallback mode immediately. Default value is 10000 ms. */
+   If 0, enter fallback mode immediately. Default value is 10000ms. */
 #define GRPC_ARG_GRPCLB_FALLBACK_TIMEOUT_MS "grpc.grpclb_fallback_timeout_ms"
 /* Experimental Arg. Channel args to be used for the control-plane channel
  * created to the grpclb load balancers. This is a pointer arg whose value is a
@@ -351,10 +349,10 @@
 #define GRPC_ARG_ADDRESS_HTTP_PROXY_ENABLED_ADDRESSES \
   "grpc.address_http_proxy_enabled_addresses"
 /** If set to non zero, surfaces the user agent string to the server. User
-    agent is surfaced by default. Boolean valued. Defaults to true. */
+    agent is surfaced by default. */
 #define GRPC_ARG_SURFACE_USER_AGENT "grpc.surface_user_agent"
 /** If set, inhibits health checking (which may be enabled via the
- *  service config.)  Boolean valued. Defaults to false. */
+ *  service config.). Boolean valued. Defaults to false. */
 #define GRPC_ARG_INHIBIT_HEALTH_CHECKING "grpc.inhibit_health_checking"
 /** If enabled, the channel's DNS resolver queries for SRV records.
  *  This is useful only when using the "grpclb" load balancing policy,
@@ -367,7 +365,7 @@
 #define GRPC_ARG_DNS_ENABLE_SRV_QUERIES "grpc.dns_enable_srv_queries"
 /** If set, determines an upper bound on the number of milliseconds that the
  * c-ares based DNS resolver will wait on queries before cancelling them.
- * The default value is 120,000 ms. Setting this to "0" will disable the
+ * The default value is 120,000ms. Setting this to "0" will disable the
  * overall timeout entirely. Note that this doesn't include internal c-ares
  * timeouts/backoff/retry logic, and so the actual DNS resolution may time out
  * sooner than the value specified here. */
