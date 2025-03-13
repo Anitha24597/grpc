@@ -22,7 +22,7 @@ Completion queue has two attributes
 
 ## Details
 
-![image](../images/grpc-cq.png)
+![image](https://github.com/grpc/grpc/raw/master/doc/images/grpc-cq.png)
 
 
 ### **grpc\_completion\_queue\_next()** & **grpc_completion_queue_pluck()** APIS
