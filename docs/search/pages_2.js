@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['background_0',['Background',['../md_doc_2fork__support.html',1,'']]],
-  ['backoff_20interop_20test_20descriptions_1',['Connection Backoff Interop Test Descriptions',['../md_doc_2connection-backoff-interop-test-description.html',1,'']]],
-  ['backoff_20protocol_2',['GRPC Connection Backoff Protocol',['../md_doc_2connection-backoff.html',1,'']]],
-  ['backward_20compatibility_20issues_20and_20workarounds_20management_3',['gRPC Server Backward Compatibility Issues and Workarounds Management',['../md_doc_2workarounds.html',1,'']]],
-  ['balancing_20in_20grpc_4',['Load Balancing in gRPC',['../md_doc_2load-balancing.html',1,'']]],
-  ['balancing_20interop_20test_20case_20descriptions_5',['xDS (Load-Balancing) Interop Test Case Descriptions',['../md_doc_2xds-test-descriptions.html',1,'']]],
-  ['based_20pollset_20implementation_20in_20grpc_6',['&lt;tt&gt;epoll&lt;/tt&gt;-based pollset implementation in gRPC',['../md_doc_2core_2epoll-polling-engine.html',1,'']]],
-  ['bazel_20support_7',['Bazel Support',['../md_doc_2bazel__support.html',1,'']]],
-  ['binary_20logging_8',['Binary Logging',['../md_doc_2binary-logging.html',1,'']]],
-  ['bootstrap_20file_20format_20in_20grpc_9',['xDS Bootstrap File Format in gRPC',['../md_doc_2grpc__xds__bootstrap__format.html',1,'']]]
+  ['c_20style_20guide_0',['GRPC C STYLE GUIDE',['../md_doc_2c-style-guide.html',1,'']]],
+  ['command_20line_20tool_1',['gRPC command line tool',['../md_doc_2command__line__tool.html',1,'']]],
+  ['completion_20queue_2',['gRPC Completion Queue',['../md_doc_2core_2grpc-cq.html',1,'']]],
+  ['compression_3',['gRPC Compression',['../md_doc_2compression.html',1,'']]],
+  ['compression_20cookbook_4',['gRPC (Core) Compression Cookbook',['../md_doc_2compression__cookbook.html',1,'']]],
+  ['connection_20backoff_20interop_20test_20descriptions_5',['Connection Backoff Interop Test Descriptions',['../md_doc_2connection-backoff-interop-test-description.html',1,'']]],
+  ['connection_20backoff_20protocol_6',['GRPC Connection Backoff Protocol',['../md_doc_2connection-backoff.html',1,'']]],
+  ['connectivity_20semantics_20and_20api_7',['gRPC Connectivity Semantics and API',['../md_doc_2connectivity-semantics-and-api.html',1,'']]],
+  ['cookbook_8',['gRPC (Core) Compression Cookbook',['../md_doc_2compression__cookbook.html',1,'']]],
+  ['core_20compression_20cookbook_9',['gRPC (Core) Compression Cookbook',['../md_doc_2compression__cookbook.html',1,'']]]
 ];

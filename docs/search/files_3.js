@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['default_5fhttp_5fproxy_5fmapper_2emd_0',['default_http_proxy_mapper.md',['../default__http__proxy__mapper_8md.html',1,'']]]
+  ['protocol_2dhttp2_2emd_0',['PROTOCOL-HTTP2.md',['../_p_r_o_t_o_c_o_l-_h_t_t_p2_8md.html',1,'']]],
+  ['protocol_2dweb_2emd_1',['PROTOCOL-WEB.md',['../_p_r_o_t_o_c_o_l-_w_e_b_8md.html',1,'']]]
 ];

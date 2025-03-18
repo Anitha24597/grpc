@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GRPC Core: gRPC Connectivity Semantics and API</title>
+<title>GRPC C++: gRPC Connectivity Semantics and API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GRPC Core<span id="projectnumber">&#160;46.0.0</span>
+   <div id="projectname">GRPC C++<span id="projectnumber">&#160;1.72.0-dev</span>
    </div>
   </td>
  </tr>
@@ -102,19 +102,17 @@ upon receiving a GOAWAY while there are no pending RPCs. </td><td>Shutdown trigg
 <h1><a class="anchor" id="autotoc_md84"></a>
 Channel State API</h1>
 <p>All gRPC libraries will expose a channel-level API method to poll the current state of a channel. In C++, this method is called GetState and returns an enum for one of the five legal states. It also accepts a boolean <code>try_to_connect</code> to transition to CONNECTING if the channel is currently IDLE. The boolean should act as if an RPC occurred, so it should also reset IDLE_TIMEOUT.</p>
-<div class="fragment"><div class="line"><a class="code hl_enumeration" href="connectivity__state_8h.html#a065b65f5cdd062a67d82e2b6bcf68cf2">grpc_connectivity_state</a> GetState(<span class="keywordtype">bool</span> try_to_connect);</div>
-<div class="ttc" id="aconnectivity__state_8h_html_a065b65f5cdd062a67d82e2b6bcf68cf2"><div class="ttname"><a href="connectivity__state_8h.html#a065b65f5cdd062a67d82e2b6bcf68cf2">grpc_connectivity_state</a></div><div class="ttdeci">grpc_connectivity_state</div><div class="ttdoc">Connectivity state of a channel.</div><div class="ttdef"><b>Definition</b> connectivity_state.h:30</div></div>
+<div class="fragment"><div class="line">grpc_connectivity_state GetState(<span class="keywordtype">bool</span> try_to_connect);</div>
 </div><!-- fragment --><p>All libraries should also expose an API that enables the application (user of the gRPC API) to be notified when the channel state changes. Since state changes can be rapid and race with any such notification, the notification should just inform the user that some state change has happened, leaving it to the user to poll the channel for the current state.</p>
 <p>The synchronous version of this API is:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">bool</span> WaitForStateChange(<a class="code hl_enumeration" href="connectivity__state_8h.html#a065b65f5cdd062a67d82e2b6bcf68cf2">grpc_connectivity_state</a> source_state, <a class="code hl_struct" href="structgpr__timespec.html">gpr_timespec</a> deadline);</div>
-<div class="ttc" id="astructgpr__timespec_html"><div class="ttname"><a href="structgpr__timespec.html">gpr_timespec</a></div><div class="ttdoc">Analogous to struct timespec.</div><div class="ttdef"><b>Definition</b> time.h:47</div></div>
+<div class="fragment"><div class="line"><span class="keywordtype">bool</span> WaitForStateChange(grpc_connectivity_state source_state, gpr_timespec deadline);</div>
 </div><!-- fragment --><p>which returns <code>true</code> when the state is something other than the <code>source_state</code> and <code>false</code> if the deadline expires. Asynchronous- and futures-based APIs should have a corresponding method that allows the application to be notified when the state of a channel changes.</p>
 <p>Note that a notification is delivered every time there is a transition from any state to any <em>other</em> state. On the other hand the rules for legal state transition, require a transition from CONNECTING to TRANSIENT_FAILURE and back to CONNECTING for every recoverable failure, even if the corresponding exponential backoff requires no wait before retry. The combined effect is that the application may receive state change notifications that appear spurious. e.g., an application waiting for state changes on a channel that is CONNECTING may receive a state change notification but find the channel in the same CONNECTING state on polling for current state because the channel may have spent infinitesimally small amount of time in the TRANSIENT_FAILURE state. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 18 2025 17:12:15 for GRPC Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Mar 18 2025 17:12:16 for GRPC C++ by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['latent_20see_0',['Latent-see',['../md_doc_2core_2latent__see.html',1,'']]],
-  ['line_20tool_1',['gRPC command line tool',['../md_doc_2command__line__tool.html',1,'']]],
-  ['list_2',['Deprecated List',['../deprecated.html',1,'']]],
-  ['load_20balancing_20in_20grpc_3',['Load Balancing in gRPC',['../md_doc_2load-balancing.html',1,'']]],
-  ['load_20balancing_20interop_20test_20case_20descriptions_4',['xDS (Load-Balancing) Interop Test Case Descriptions',['../md_doc_2xds-test-descriptions.html',1,'']]],
-  ['logging_5',['Binary Logging',['../md_doc_2binary-logging.html',1,'']]]
+  ['semantics_20and_20api_0',['gRPC Connectivity Semantics and API',['../md_doc_2connectivity-semantics-and-api.html',1,'']]],
+  ['style_20guide_1',['GRPC C STYLE GUIDE',['../md_doc_2c-style-guide.html',1,'']]],
+  ['support_2',['Bazel Support',['../md_doc_2bazel__support.html',1,'']]]
 ];

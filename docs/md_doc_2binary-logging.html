@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GRPC Core: Binary Logging</title>
+<title>GRPC C++: Binary Logging</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GRPC Core<span id="projectnumber">&#160;46.0.0</span>
+   <div id="projectname">GRPC C++<span id="projectnumber">&#160;1.72.0-dev</span>
    </div>
   </td>
  </tr>
@@ -101,9 +101,9 @@ API</h1>
 <div class="line"> </div>
 <div class="line"><span class="comment">// The context provides the metadata contents</span></div>
 <div class="line"><span class="comment">// direction = CLIENT_RECV</span></div>
-<div class="line">LogStatus(ClientContext context, <a class="code hl_enumeration" href="status_8h.html#a35ab2a68917eb836de84cb23253108eb">grpc_status_code</a> code, <span class="keywordtype">string</span> details);</div>
+<div class="line">LogStatus(ClientContext context, grpc_status_code code, <span class="keywordtype">string</span> details);</div>
 <div class="line"><span class="comment">// direction = SERVER_SEND</span></div>
-<div class="line">LogStatus(ServerContext context, <a class="code hl_enumeration" href="status_8h.html#a35ab2a68917eb836de84cb23253108eb">grpc_status_code</a> code, <span class="keywordtype">string</span> details);</div>
+<div class="line">LogStatus(ServerContext context, grpc_status_code code, <span class="keywordtype">string</span> details);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// The context provides the user data contents</span></div>
 <div class="line"><span class="comment">// direction = CLIENT_SEND</span></div>
@@ -119,7 +119,6 @@ API</h1>
 <div class="line">LogResponseMessage(ClientContext context, uint32_t length, T message);</div>
 <div class="line"><span class="comment">// direction = SERVER_SEND</span></div>
 <div class="line">LogResponseMessage(ServerContext context, uint32_t length, T message);</div>
-<div class="ttc" id="astatus_8h_html_a35ab2a68917eb836de84cb23253108eb"><div class="ttname"><a href="status_8h.html#a35ab2a68917eb836de84cb23253108eb">grpc_status_code</a></div><div class="ttdeci">grpc_status_code</div><div class="ttdef"><b>Definition</b> status.h:28</div></div>
 </div><!-- fragment --><p>In all of those cases, the <code>rpc_id</code> is provided by the context, and each combination of method and context argument type implies a single direction, as noted in the comments.</p>
 <p>For the message log functions, the <code>length</code> argument indicates the length of the complete message, and the <code>message</code> argument may be only part of the complete message, stripped of sensitive material and/or shortened for efficiency.</p>
 <h1><a class="anchor" id="autotoc_md35"></a>
@@ -129,7 +128,7 @@ Language differences</h1>
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 18 2025 17:12:15 for GRPC Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Mar 18 2025 17:12:16 for GRPC C++ by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

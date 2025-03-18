@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GRPC Core: gRPC Completion Queue</title>
+<title>GRPC C++: gRPC Completion Queue</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">GRPC Core<span id="projectnumber">&#160;46.0.0</span>
+   <div id="projectname">GRPC C++<span id="projectnumber">&#160;1.72.0-dev</span>
    </div>
   </td>
  </tr>
@@ -72,16 +72,16 @@ $(function() {
   <div class="headertitle"><div class="title">gRPC Completion Queue</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md108"></a> <em>Author: Sree Kuchibhotla (@sreecha) - Sep 2018</em></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md85"></a> <em>Author: Sree Kuchibhotla (@sreecha) - Sep 2018</em></p>
 <p>Code: <a href="https://github.com/grpc/grpc/blob/v1.15.1/src/core/lib/surface/completion_queue.cc">completion_queue.cc</a></p>
 <p>This document gives an overview of completion queue architecture and focuses mainly on the interaction between completion queue and the Polling engine layer.</p>
-<h1><a class="anchor" id="autotoc_md109"></a>
+<h1><a class="anchor" id="autotoc_md86"></a>
 Completion queue attributes</h1>
 <p>Completion queue has two attributes</p>
 <ul>
 <li>Completion_type:<ul>
-<li>GRPC_CQ_NEXT: <a class="el" href="grpc_8h.html#ab43d55077bcbeb324044d3dcd26a5c80" title="Blocks until an event is available, the completion queue is being shut down, or deadline is reached.">grpc_completion_queue_next()</a> can be called (but not <a class="el" href="grpc_8h.html#a0292bf7a0c794771cd66766dc4b8276c" title="Blocks until an event with tag &#39;tag&#39; is available, the completion queue is being shutdown or deadline...">grpc_completion_queue_pluck()</a>)</li>
-<li>GRPC_CQ_PLUCK: <a class="el" href="grpc_8h.html#a0292bf7a0c794771cd66766dc4b8276c" title="Blocks until an event with tag &#39;tag&#39; is available, the completion queue is being shutdown or deadline...">grpc_completion_queue_pluck()</a> can be called (but not <a class="el" href="grpc_8h.html#ab43d55077bcbeb324044d3dcd26a5c80" title="Blocks until an event is available, the completion queue is being shut down, or deadline is reached.">grpc_completion_queue_next()</a>)</li>
+<li>GRPC_CQ_NEXT: grpc_completion_queue_next() can be called (but not grpc_completion_queue_pluck())</li>
+<li>GRPC_CQ_PLUCK: grpc_completion_queue_pluck() can be called (but not grpc_completion_queue_next())</li>
 <li>GRPC_CQ_CALLBACK: The tags in the queue are function pointers to callbacks. Also, neither next() nor pluck() can be called on this</li>
 </ul>
 </li>
@@ -92,10 +92,13 @@ Completion queue attributes</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md110"></a>
+<h1><a class="anchor" id="autotoc_md87"></a>
 Details</h1>
-<p><img src="/doc/images/grpc-cq.png" alt="image" class="inline"/></p>
-<h2><a class="anchor" id="autotoc_md111"></a>
+<div class="image">
+<img src="grpc-cq.png" alt=""/>
+<div class="caption">
+image</div></div>
+    <h2><a class="anchor" id="autotoc_md88"></a>
 &lt;strong&gt;grpc_completion_queue_next()&lt;/strong&gt; &amp; &lt;strong&gt;grpc_completion_queue_pluck()&lt;/strong&gt; APIS</h2>
 <div class="fragment"><div class="line"> C++</div>
 <div class="line">grpc_completion_queue_next(cq, deadline)/pluck(cq, deadline, tag) {</div>
@@ -113,7 +116,7 @@ Details</h1>
 <div class="line">    \\    on SOME completion queue - not necessarily this one)</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md112"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md89"></a>
 Queuing a completion event (i.e., "tag")</h2>
 <div class="fragment"><div class="line"> C++</div>
 <div class="line">grpc_cq_end_op(cq, tag) {</div>
@@ -130,7 +133,7 @@ Queuing a completion event (i.e., "tag")</h2>
 </div><!-- PageDoc -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Mar 18 2025 17:12:15 for GRPC Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Mar 18 2025 17:12:16 for GRPC C++ by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
